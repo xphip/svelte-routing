@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { LinkProps } from "../types/Link";
-  import { useHistory, useLocation, useRouter } from "./contexts.js";
-  import { resolve, shouldNavigate } from "./utils.js";
+  import type { LinkProps } from "./Link";
+  import { useHistory, useLocation, useRouter } from "../../lib/contexts.js";
+  import { resolve, shouldNavigate } from "../../lib/utils.js";
 
   let {
     children,

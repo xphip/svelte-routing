@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getContext, onDestroy, type Component } from "svelte";
-  import { ROUTER, useRouter } from "./contexts.js";
-  import { canUseDOM } from "./utils.js";
-  import type { RouteProps, RouteParams } from "../types/Route.js";
+  import { ROUTER, useRouter } from "../../lib/contexts.js";
+  import { canUseDOM } from "../../lib/utils.js";
+  import type { RouteProps, RouteParams } from "./Route.js";
 
   let { path = "", component, children, ...rest }: RouteProps = $props();
 

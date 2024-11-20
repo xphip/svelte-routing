@@ -10,7 +10,7 @@ import { hostMatches, shouldNavigate } from "./utils.js";
  * <a href="/post/{postId}" use:link>{post.title}</a>
  * ```
  */
-const link = (node: HTMLElement) => {
+export const link = (node: HTMLElement) => {
   const onClick = (event: MouseEvent) => {
     const anchor = event.currentTarget;
     if (anchor instanceof HTMLAnchorElement) {
@@ -53,7 +53,7 @@ const link = (node: HTMLElement) => {
  * </div>
  * ```
  */
-const links = (node: HTMLElement) => {
+export const links = (node: HTMLElement) => {
   const findClosest = (tagName: string, el: HTMLElement) => {
     while (el && el.tagName !== tagName && el.parentElement)
       el = el.parentElement;
@@ -89,5 +89,3 @@ const links = (node: HTMLElement) => {
     },
   };
 };
-
-export { link, links };

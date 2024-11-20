@@ -1,6 +1,6 @@
-import { SvelteComponent, Component, Snippet } from "svelte";
-import { RouteLocation } from "./Route";
-import { globalHistory } from "../src/history";
+import type { Snippet } from "svelte";
+import type { RouteLocation } from "../Route/Route";
+import { globalHistory } from "../../lib/history";
 
 export type Viewtransition = {
   fn?: any;
@@ -20,5 +20,3 @@ export type RouterProps = {
   history?: typeof globalHistory;
   children: Snippet<[string | null, RouteLocation]>;
 };
-
-export class Router extends SvelteComponent<RouterProps> {}

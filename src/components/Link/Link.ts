@@ -1,6 +1,6 @@
-import { Component, Snippet, SvelteComponent } from "svelte";
-import { HTMLAnchorAttributes } from "svelte/elements";
-import { RouteLocation } from "./Route";
+import type { Snippet } from "svelte";
+import type { HTMLAnchorAttributes } from "svelte/elements";
+import type { RouteLocation } from "../Route/Route";
 
 export type LinkProps = {
   children: Snippet<[boolean]>;
@@ -20,5 +20,3 @@ export type GetPropsParams = {
   isPartiallyCurrent: boolean;
   isCurrent: boolean;
 };
-
-export type Link = Component<LinkProps>;

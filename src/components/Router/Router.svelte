@@ -7,12 +7,12 @@
     ROUTER,
     useInternalLocation,
     useRouter,
-  } from "./contexts.js";
-  import { globalHistory } from "./history.js";
-  import { combinePaths, pick } from "./utils.js";
-  import type { RouteConfig } from "../types/RouterContext.js";
-  import type { RouteLocation } from "../types/Route.js";
-  import type { Viewtransition, RouterProps } from "../types/Router.js";
+  } from "../../lib/contexts.js";
+  import { globalHistory } from "../../lib/history.js";
+  import { combinePaths, pick } from "../../lib/utils.js";
+  import type { RouteConfig } from "../../lib/RouterContext.js";
+  import type { RouteLocation } from "../Route/Route.js";
+  import type { Viewtransition, RouterProps } from "./Router.js";
 
   let {
     basepath = "/",

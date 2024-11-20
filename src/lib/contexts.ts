@@ -1,8 +1,8 @@
 import { getContext } from "svelte";
 import { readable, writable } from "svelte/store";
-import type { RouteLocation } from "../types/Route";
-import type { RouterContext } from "../types/RouterContext";
+import type { RouterContext } from "../lib/RouterContext";
 import { globalHistory } from "./history";
+import type { RouteLocation } from "../components/Route/Route";
 
 export const LOCATION = {};
 export const ROUTER = {};
@@ -10,10 +10,11 @@ export const HISTORY = {};
 
 type LocationContext = ReturnType<typeof readable<RouteLocation>>;
 
-type HistoryContext = ReturnType<typeof readable<typeof globalHistory>>;
+type HistoryContext = typeof globalHistory;
 
 export const useInternalLocation = () =>
   getContext<ReturnType<typeof writable<RouteLocation>>>(LOCATION);
+
 export const useLocation = () => getContext<LocationContext>(LOCATION);
 export const useRouter = () => getContext<RouterContext>(ROUTER);
-export const useHistory = () => getContext<typeof globalHistory>(HISTORY);
+export const useHistory = () => getContext<HistoryContext>(HISTORY);

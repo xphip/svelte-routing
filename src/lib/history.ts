@@ -11,18 +11,41 @@ export type HistoryListener = (event: {
 }) => void;
 
 const getLocation = (
-  source: Window | ReturnType<typeof createMemorySource>
-) => {
+  source: typeof window
+): Location & { state: any; key: string } => {
   return {
     ...source.location,
     state: source.history.state,
     key: (source.history.state && source.history.state.key) || "initial",
   };
 };
+
+type Listener = (params: {
+  location: ReturnType<typeof getLocation>;
+  action: "POP" | "PUSH";
+  preserveScroll?: boolean;
+}) => void;
+
+type StackItem = { pathname: string; search: string };
+
 const createHistory = (
-  source: Window | ReturnType<typeof createMemorySource>
-) => {
-  const listeners: HistoryListener[] = [];
+  source: typeof window
+): {
+  readonly location: ReturnType<typeof getLocation>;
+  listen: (listener: Listener) => () => void;
+  navigate: (
+    to: string,
+    options?: {
+      replace?: boolean;
+      state?: {
+        [k in string | number]: unknown;
+      };
+      preserveScroll?: boolean;
+      blurActiveElement?: boolean;
+    }
+  ) => void;
+} => {
+  const listeners: Listener[] = [];
   let location = getLocation(source);
 
   return {
@@ -30,7 +53,7 @@ const createHistory = (
       return location;
     },
 
-    listen(listener: HistoryListener) {
+    listen(listener: Listener) {
       listeners.push(listener);
 
       const popstateListener = () => {
@@ -47,15 +70,13 @@ const createHistory = (
       };
     },
 
-    navigate(
-      to: string,
-      {
+    navigate(to, options) {
+      let {
         state = {},
         replace = false,
         preserveScroll = false,
-        blurActiveElement = true,
-      } = {}
-    ) {
+        blurActiveElement = false,
+      } = options ?? {};
       state = { ...state, key: Date.now() + "" };
       // try...catch iOS Safari limits to 100 pushState calls
       try {
@@ -74,7 +95,21 @@ const createHistory = (
   };
 };
 // Stores history entries in memory for testing or other platforms like Native
-const createMemorySource = (initialPathname = "/") => {
+const createMemorySource = (
+  initialPathname = "/"
+): {
+  readonly location: StackItem;
+  // These functions seem to have no implimentation
+  addEventListener: typeof window.addEventListener;
+  removeEventListener: typeof window.removeEventListener;
+  history: {
+    readonly entries: StackItem[];
+    readonly index: number;
+    readonly state: any;
+    pushState: (state: any, _: unknown, uri: string) => void;
+    replaceState: (state: any, _: unknown, uri: string) => void;
+  };
+} => {
   let index = 0;
   const stack = [{ pathname: initialPathname, search: "" }];
   const states: Record<string, unknown>[] = [];
@@ -83,8 +118,8 @@ const createMemorySource = (initialPathname = "/") => {
     get location() {
       return stack[index];
     },
-    addEventListener(name: string, fn: any) {},
-    removeEventListener(name: string, fn: any) {},
+    addEventListener() {},
+    removeEventListener() {},
     history: {
       get entries() {
         return stack;
@@ -112,7 +147,7 @@ const createMemorySource = (initialPathname = "/") => {
 // Global history uses window.history as the source if available,
 // otherwise a memory history
 const globalHistory = createHistory(
-  canUseDOM() ? window : createMemorySource()
+  canUseDOM() ? window : (createMemorySource() as unknown as typeof window)
 );
 const { navigate } = globalHistory;
 

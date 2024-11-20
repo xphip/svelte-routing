@@ -1,4 +1,4 @@
-import { SvelteComponent, Component, Snippet } from "svelte";
+import type { Component, Snippet } from "svelte";
 
 type AsyncSvelteComponent = () => Promise<{
   default: Component;
@@ -30,11 +30,3 @@ export type RouteLocation = {
 export type RouteParams = {
   [param: string]: string;
 };
-
-// export class RouteO extends SvelteComponent<
-//     RouteProps,
-//     Record<string, any>,
-//     RouteSlots
-// > {}
-
-export type Route = Component<RouteProps, Record<string, any>, RouteSlots>;
