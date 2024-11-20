@@ -1,6 +1,8 @@
 [![npm][npm]][npm-url]
 
-# Svelte Routing
+# Svelte5 Routing
+
+Forked from [svelte-routing](https://github.com/EmilTholin/svelte-routing)
 
 A declarative Svelte routing library with SSR support.
 
@@ -45,7 +47,7 @@ npm i -D svelte-routing
 import App from "./App.svelte";
 
 const app = new App({
-    target: document.getElementById("app"),
+  target: document.getElementById("app"),
 });
 ```
 
@@ -100,7 +102,7 @@ be exposed to the slot template using `let:params`.
 
 ```html
 <Route path="/blog/:id" let:params>
-    <BlogPost id="{params.id}" />
+  <BlogPost id="{params.id}" />
 </Route>
 ```
 
@@ -132,13 +134,13 @@ in the `Link` component.
 
 ```html
 <script>
-    import { navigate } from "svelte-routing";
+  import { navigate } from "svelte-routing";
 
-    function onSubmit() {
-        login().then(() => {
-            navigate("/success", { replace: true });
-        });
-    }
+  function onSubmit() {
+    login().then(() => {
+      navigate("/success", { replace: true });
+    });
+  }
 </script>
 ```
 
@@ -150,13 +152,13 @@ adding a new one and `preserveScroll` to not scroll the page to the top when cli
 
 ```html
 <script>
-    import { link } from "svelte-routing";
+  import { link } from "svelte-routing";
 </script>
 
 <Router>
-    <a href="/" use:link>Home</a>
-    <a href="/replace" use:link replace>Replace this URL</a>
-    <!-- ... -->
+  <a href="/" use:link>Home</a>
+  <a href="/replace" use:link replace>Replace this URL</a>
+  <!-- ... -->
 </Router>
 ```
 
@@ -172,16 +174,16 @@ it to use the native browser action.
 ```html
 <!-- App.svelte -->
 <script>
-    import { links } from "svelte-routing";
+  import { links } from "svelte-routing";
 </script>
 
 <div use:links>
-    <Router>
-        <a href="/">Home</a>
-        <a href="/replace" replace>Replace this URL</a>
-        <a href="/native" noroute>Use the native action</a>
-        <!-- ... -->
-    </Router>
+  <Router>
+    <a href="/">Home</a>
+    <a href="/replace" replace>Replace this URL</a>
+    <a href="/native" noroute>Use the native action</a>
+    <!-- ... -->
+  </Router>
 </div>
 ```
 
@@ -193,13 +195,13 @@ _`builtin transition`_
 
 ```html
 <script>
-    import { fade } from "svelte/transition";
-    // ...
+  import { fade } from "svelte/transition";
+  // ...
 </script>
 
 <Router viewtransition="{() => { fn: fade, duration: 500 }}">
-    <Route path="/" component="{Home}" />
-    <Route path="/contact" component="{Contact}" />
+  <Route path="/" component="{Home}" />
+  <Route path="/contact" component="{Contact}" />
 </Router>
 ```
 
@@ -207,15 +209,15 @@ _`custom transition`_
 
 ```html
 <script>
-    import { cubicin } from "svelte/easing";
-    // ...
+  import { cubicin } from "svelte/easing";
+  // ...
 </script>
 
 <Router
-    viewtransition="{() => { duration: 500, easing: cubicin, css: (t) => `scale:${t};transform-origin:center center;` }}"
+  viewtransition="{() => { duration: 500, easing: cubicin, css: (t) => `scale:${t};transform-origin:center center;` }}"
 >
-    <Route path="/" component="{Home}" />
-    <Route path="/contact" component="{Contact}" />
+  <Route path="/" component="{Home}" />
+  <Route path="/contact" component="{Contact}" />
 </Router>
 ```
 
