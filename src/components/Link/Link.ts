@@ -12,7 +12,7 @@ export type LinkProps = {
   };
   getProps?: (linkParams: GetPropsParams) => Record<string, any>;
   click?: (e: MouseEvent) => void;
-} & Omit<HTMLAnchorAttributes, "href">;
+} & Omit<HTMLAnchorAttributes, "href" | "children">;
 
 export type GetPropsParams = {
   location: RouteLocation;

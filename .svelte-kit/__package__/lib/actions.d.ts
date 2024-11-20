@@ -30,3 +30,4 @@ export declare const link: (node: HTMLElement) => {
 export declare const links: (node: HTMLElement) => {
     destroy(): void;
 };
+//# sourceMappingURL=actions.d.ts.map

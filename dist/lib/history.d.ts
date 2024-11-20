@@ -55,3 +55,4 @@ declare const navigate: (to: string, options?: {
     blurActiveElement?: boolean;
 }) => void;
 export { globalHistory, navigate, createHistory, createMemorySource };
+//# sourceMappingURL=history.d.ts.map

@@ -18,3 +18,4 @@ export type RouterProps = {
     history?: typeof globalHistory;
     children: Snippet<[string | null, RouteLocation]>;
 };
+//# sourceMappingURL=Router.d.ts.map

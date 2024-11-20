@@ -69,3 +69,4 @@ declare const shouldNavigate: (event: MouseEvent) => boolean;
 declare const hostMatches: (anchor: HTMLAnchorElement) => boolean;
 declare const canUseDOM: () => boolean;
 export { stripSlashes, pick, resolve, combinePaths, shouldNavigate, hostMatches, canUseDOM, };
+//# sourceMappingURL=utils.d.ts.map

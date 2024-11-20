@@ -24,3 +24,4 @@ export type RouterContext = {
     unregisterRoute: (route: RouteConfig) => {};
 };
 export {};
+//# sourceMappingURL=RouterContext.d.ts.map

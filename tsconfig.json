@@ -10,7 +10,11 @@
     "isolatedModules": true,
     "strict": true,
     "declaration": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "declarationMap": true,
     "declarationDir": "./dist",
+    "esModuleInterop": true,
     "outDir": "./dist",
     "rootDir": "./src"
   },
