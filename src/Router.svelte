@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext, onMount, setContext, type Snippet } from "svelte";
+  import { getContext, onMount, setContext } from "svelte";
   import { derived, writable } from "svelte/store";
   import {
     HISTORY,

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { LinkProps } from "./../types/Link";
+  import type { LinkProps } from "../types/Link";
   import { useHistory, useLocation, useRouter } from "./contexts.js";
   import { resolve, shouldNavigate } from "./utils.js";
 
