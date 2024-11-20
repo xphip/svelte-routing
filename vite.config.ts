@@ -6,11 +6,17 @@ export default defineConfig({
   build: {
     lib: {
       entry: "./src/index.ts",
+      name: "svelte5-routing",
       fileName: "index",
       formats: ["es"],
     },
     rollupOptions: {
       external: ["svelte"],
+      output: {
+        dir: "dist",
+        format: "es",
+      },
     },
+    outDir: "dist",
   },
 });
