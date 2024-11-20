@@ -1,24 +1,24 @@
-import { SvelteComponent } from "svelte";
+import { Component, Snippet, SvelteComponent } from "svelte";
 import { HTMLAnchorAttributes } from "svelte/elements";
 import { RouteLocation } from "./Route";
 
-type LinkProps = {
-    to: string;
-    replace?: boolean;
-    preserveScroll?: boolean;
-    state?: {
-        [k in string | number]: unknown;
-    };
-    getProps?: (linkParams: GetPropsParams) => Record<string, any>;
+export type LinkProps = {
+  children: Snippet<[boolean]>;
+  to: string;
+  replace?: boolean;
+  preserveScroll?: boolean;
+  state?: {
+    [k in string | number]: unknown;
+  };
+  getProps?: (linkParams: GetPropsParams) => Record<string, any>;
+  click?: (e: MouseEvent) => void;
+} & Omit<HTMLAnchorAttributes, "href">;
+
+export type GetPropsParams = {
+  location: RouteLocation;
+  href: string;
+  isPartiallyCurrent: boolean;
+  isCurrent: boolean;
 };
 
-type GetPropsParams = {
-    location: RouteLocation;
-    href: string;
-    isPartiallyCurrent: boolean;
-    isCurrent: boolean;
-};
-
-export class Link extends SvelteComponent<
-    Omit<LinkProps & HTMLAnchorAttributes, "href">
-> {}
+export type Link = Component<LinkProps>;

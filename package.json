@@ -1,8 +1,9 @@
 {
-    "name": "svelte-routing",
+    "name": "svelte5-routing",
     "version": "2.13.0",
-    "author": "Emil Tholin @EmilTholin",
+    "author": "Jacob Cutshall @JacobCutshall",
     "license": "MIT",
+    "type": "module",
     "description": "A declarative Svelte routing library with SSR support",
     "keywords": [
         "svelte routing",
@@ -15,7 +16,7 @@
         "svelte router",
         "typescript"
     ],
-    "repository": "EmilTholin/svelte-routing",
+    "repository": "JacobCutshall/svelte5-routing",
     "main": "./src/index.js",
     "types": "./types/index.d.ts",
     "svelte": "./src/index.js",
@@ -27,8 +28,11 @@
         }
     },
     "devDependencies": {
-        "svelte": "^4.2.15",
+        "@sveltejs/vite-plugin-svelte": "^4.0.1",
+        "@tsconfig/svelte": "^5.0.4",
         "prettier": "^3.2.5",
-        "prettier-plugin-svelte": "^3.2.3"
+        "prettier-plugin-svelte": "^3.2.3",
+        "svelte": "^5.2.3",
+        "typescript": "^5.6.3"
     }
 }
