@@ -69,7 +69,7 @@ smaller apps.
 |     Property     | Required | Default Value | Description                                                                                                                                                                                                                                                                                                 |
 | :--------------: | :------: | :-----------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    `basepath`    |          |     `"/"`     | The `basepath` property will be added to all the `to` properties of `Link` descendants and to all `path` properties of `Route` descendants. This property can be ignored in most cases, but if you host your application on e.g. `https://example.com/my-site`, the `basepath` should be set to `/my-site`. |
-|      `url`       |          |     `""`      | The `url` property is used in SSR to force the current URL of the application and will be used by all `Link` and `Route` descendants. A falsy value will be ignored by the `Router`, so it's enough to declare `let url = $state("");` for your topmost component and only give it a value in SSR.           |
+|      `url`       |          |     `""`      | The `url` property is used in SSR to force the current URL of the application and will be used by all `Link` and `Route` descendants. A falsy value will be ignored by the `Router`, so it's enough to declare `let url = $state("");` for your topmost component and only give it a value in SSR.          |
 | `viewtransition` |          |    `null`     | View Transition (Experimental)                                                                                                                                                                                                                                                                              |
 
 #### `Link`
@@ -83,7 +83,7 @@ A component used to navigate around the application.
 |       `to`       |   ✔ ️   |     `"#"`     | URL the component should link to.                                                                                                                                                                                                     |
 |    `replace`     |          |    `false`    | When `true`, clicking the `Link` will replace the current entry in the history stack instead of adding a new one.                                                                                                                     |
 |     `state`      |          |     `{}`      | An object that will be pushed to the history stack when the `Link` is clicked.                                                                                                                                                        |
-|    `getProps`    |          | `() => ({})`  | A function that returns an object that will be spread on the underlying anchor element's attributes. The first argument given to the function is an object with the properties `location`, `href`, `isPartiallyCurrent`, `isCurrent`. |
+|  ~~`getProps`~~  |          | `() => ({})`  | A function that returns an object that will be spread on the underlying anchor element's attributes. The first argument given to the function is an object with the properties `location`, `href`, `isPartiallyCurrent`, `isCurrent`. |
 | `preserveScroll` |          |    `false`    | When `true`, clicking the `Link` will not scroll the page to the top.                                                                                                                                                                 |
 
 #### `Route`
@@ -104,7 +104,7 @@ be exposed to the children snippet.
 ```html
 <Route path="/blog/:id">
   {#snippet children(params)}
-    <BlogPost id="{params.id}" />
+  <BlogPost id="{params.id}" />
   {/snippet}
 </Route>
 ```
@@ -121,10 +121,11 @@ The active status of link can be exposed to the children snippet.
 
 ###### Properties
 
-|  Property   | Required | Default Value | Description                                                                                                                                                              |
-| :---------: | :------: | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   `path`    |          | `""`          | The path for when this component should be rendered. If no `path` is given the `Route` will act as the default that matches if no other `Route` in the `Router` matches. |
-| `component` |          | `null`        | The component constructor that will be used for rendering when the `Route` matches. If `component` is not set, the children of `Route` will be rendered instead.         |
+|    Property     | Required | Default Value | Description                                                                                                                                                              |
+| :-------------: | :------: | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|     `path`      |          | `""`          | The path for when this component should be rendered. If no `path` is given the `Route` will act as the default that matches if no other `Route` in the `Router` matches. |
+| ~~`component`~~ |          | `null`        | The component constructor that will be used for rendering when the `Route` matches. If `component` is not set, the children of `Route` will be rendered instead.         |
+|   `children`    |   yes    |               | children passed inside the element. You can use the children snippet to access any url parameters `{#snippet children(params)}`                                          |
 
 #### `navigate`
 

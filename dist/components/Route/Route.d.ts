@@ -26,3 +26,4 @@ export type RouteParams = {
     [param: string]: string;
 };
 export {};
+//# sourceMappingURL=Route.d.ts.map

@@ -18,14 +18,14 @@
     default: path === "",
   };
 
-  $effect(() => {
+  $effect.pre(() => {
     if ($activeRoute && $activeRoute.route === route) {
       routeParams = $activeRoute.params;
 
       // const { component: c, path, ...rest } = $$props;
       routeProps = rest;
 
-      // TODO determine what this actually was used for
+      // TODO fix component prop
       // if (component) {
       //   if (component.toString().startsWith("class ")) component = component;
       //   else component = component();
