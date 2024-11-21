@@ -1,6 +1,6 @@
 [![npm][npm]][npm-url]
 
-# Svelte5 Routing
+# Svelte5 Router
 
 Forked from [svelte-routing](https://github.com/EmilTholin/svelte-routing)
 
@@ -11,7 +11,7 @@ A declarative Svelte routing library with SSR support.
 ## Install
 
 ```bash
-npm i -D svelte-routing
+npm i -D svelte5-router
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npm i -D svelte-routing
 ```html
 <!-- App.svelte -->
 <script>
-  import { Router, Link, Route } from "svelte-routing";
+  import { Router, Link, Route } from "svelte5-router";
   import Home from "./routes/Home.svelte";
   import About from "./routes/About.svelte";
   import Blog from "./routes/Blog.svelte";
@@ -45,8 +45,9 @@ npm i -D svelte-routing
 ```javascript
 // main.js
 import App from "./App.svelte";
+import { mount } from "svelte";
 
-const app = new App({
+const app = mount(App, {
   target: document.getElementById("app"),
 });
 ```
@@ -68,7 +69,7 @@ smaller apps.
 |     Property     | Required | Default Value | Description                                                                                                                                                                                                                                                                                                 |
 | :--------------: | :------: | :-----------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    `basepath`    |          |     `"/"`     | The `basepath` property will be added to all the `to` properties of `Link` descendants and to all `path` properties of `Route` descendants. This property can be ignored in most cases, but if you host your application on e.g. `https://example.com/my-site`, the `basepath` should be set to `/my-site`. |
-|      `url`       |          |     `""`      | The `url` property is used in SSR to force the current URL of the application and will be used by all `Link` and `Route` descendants. A falsy value will be ignored by the `Router`, so it's enough to declare `export let url = "";` for your topmost component and only give it a value in SSR.           |
+|      `url`       |          |     `""`      | The `url` property is used in SSR to force the current URL of the application and will be used by all `Link` and `Route` descendants. A falsy value will be ignored by the `Router`, so it's enough to declare `let url = $state("");` for your topmost component and only give it a value in SSR.           |
 | `viewtransition` |          |    `null`     | View Transition (Experimental)                                                                                                                                                                                                                                                                              |
 
 #### `Link`
@@ -98,20 +99,23 @@ properties. A wildcard `*` can be given a name with `*wildcardName` to pass the
 wildcard string as the `wildcardName` property instead of as the `*` property.
 
 Potential path parameters are passed back to the parent using props, so they can
-be exposed to the slot template using `let:params`.
+be exposed to the children snippet.
 
 ```html
-<Route path="/blog/:id" let:params>
-  <BlogPost id="{params.id}" />
+<Route path="/blog/:id">
+  {#snippet children(params)}
+    <BlogPost id="{params.id}" />
+  {/snippet}
 </Route>
 ```
 
-The active status of link can be exposed to the slot template using
-`let:active`.
+The active status of link can be exposed to the children snippet.
 
 ```html
-<Link to="/browser" let:active>
-  <MenuItem active={active}>Browser</MenuItem>
+<Link to="/browser">
+  {#snippet children(active)}
+    <MenuItem active={active}>Browser</MenuItem>
+  {/snippet}
 </Link>
 ```
 
@@ -134,7 +138,7 @@ in the `Link` component.
 
 ```html
 <script>
-  import { navigate } from "svelte-routing";
+  import { navigate } from "svelte5-router";
 
   function onSubmit() {
     login().then(() => {
@@ -152,7 +156,7 @@ adding a new one and `preserveScroll` to not scroll the page to the top when cli
 
 ```html
 <script>
-  import { link } from "svelte-routing";
+  import { link } from "svelte5-router";
 </script>
 
 <Router>
@@ -174,7 +178,7 @@ it to use the native browser action.
 ```html
 <!-- App.svelte -->
 <script>
-  import { links } from "svelte-routing";
+  import { links } from "svelte5-router";
 </script>
 
 <div use:links>
@@ -232,5 +236,5 @@ for this project by you, shall be licensed as **MIT**, without any additional
 terms or conditions. [**Code of Conduct**](CODE_OF_CONDUCT.md).
 
 [npm]: https://img.shields.io/npm/v/svelte-routing.svg
-[npm-url]: https://npmjs.com/package/svelte-routing
-[changelog-url]: https://github.com/EmilTholin/svelte-routing/blob/master/CHANGELOG.md
+[npm-url]: https://npmjs.com/package/svelte5-router
+[changelog-url]: https://github.com/jpcutshall/svelte5-router/blob/master/CHANGELOG.md
