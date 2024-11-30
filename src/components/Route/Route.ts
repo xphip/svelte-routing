@@ -6,7 +6,7 @@ type AsyncSvelteComponent = () => Promise<{
 
 export type RouteProps = {
   path?: string;
-  component?: Component | AsyncSvelteComponent;
+  component?: Component<any, Record<string, any>>; //| AsyncSvelteComponent;
   children?: Snippet<[RouteParams]>;
   [additionalProp: string]: unknown;
 };
