@@ -1,4 +1,4 @@
-[![npm][npm]][npm-url]
+![npm](https://img.shields.io/badge/npm-v3.0.1-blue)
 
 # Svelte5 Router
 
