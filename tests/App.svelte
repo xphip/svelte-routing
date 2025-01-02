@@ -1,6 +1,6 @@
 <!-- App.svelte -->
 <script>
-  import { Router, Link, Route } from "svelte5-router";
+  import { Router, Link, Route } from "svelte-routing";
   // @ts-ignore
   import Home from "./routes/Home.svelte";
   // @ts-ignore

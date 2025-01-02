@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {useHistory} from "svelte5-router";
+  import {useHistory} from "svelte-routing";
   const history = useHistory();
 
   const handleClick = () => {

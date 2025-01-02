@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: "./src/index.ts",
-      name: "svelte5-routing",
+      name: "svelte-routing",
       fileName: "index",
       formats: ["es"],
     },

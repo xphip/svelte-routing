@@ -11,7 +11,7 @@ A declarative Svelte routing library with SSR support.
 ## Install
 
 ```bash
-npm i -D svelte5-router
+npm i -D https://github.com/xphip/svelte-routing#master
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npm i -D svelte5-router
 ```html
 <!-- App.svelte -->
 <script>
-  import { Router, Link, Route } from "svelte5-router";
+  import { Router, Link, Route } from "svelte-routing";
   import Home from "./routes/Home.svelte";
   import About from "./routes/About.svelte";
   import Blog from "./routes/Blog.svelte";
@@ -139,7 +139,7 @@ in the `Link` component.
 
 ```html
 <script>
-  import { navigate } from "svelte5-router";
+  import { navigate } from "svelte-routing";
 
   function onSubmit() {
     login().then(() => {
@@ -157,7 +157,7 @@ adding a new one and `preserveScroll` to not scroll the page to the top when cli
 
 ```html
 <script>
-  import { link } from "svelte5-router";
+  import { link } from "svelte-routing";
 </script>
 
 <Router>
@@ -179,7 +179,7 @@ it to use the native browser action.
 ```html
 <!-- App.svelte -->
 <script>
-  import { links } from "svelte5-router";
+  import { links } from "svelte-routing";
 </script>
 
 <div use:links>
@@ -237,5 +237,5 @@ for this project by you, shall be licensed as **MIT**, without any additional
 terms or conditions. [**Code of Conduct**](CODE_OF_CONDUCT.md).
 
 [npm]: https://img.shields.io/npm/v/svelte-routing.svg
-[npm-url]: https://npmjs.com/package/svelte5-router
+[npm-url]: https://npmjs.com/package/svelte-routing
 [changelog-url]: https://github.com/xphip/svelte-routing/blob/master/CHANGELOG.md

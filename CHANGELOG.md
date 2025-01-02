@@ -2,7 +2,7 @@
 
 # 3.0.0
 
-- Migrate to svelte v5 in svelte5-router package
+- Migrate to svelte v5 in svelte-routing package
 
 # 2.13.0
 
