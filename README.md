@@ -238,4 +238,4 @@ terms or conditions. [**Code of Conduct**](CODE_OF_CONDUCT.md).
 
 [npm]: https://img.shields.io/npm/v/svelte-routing.svg
 [npm-url]: https://npmjs.com/package/svelte5-router
-[changelog-url]: https://github.com/jpcutshall/svelte5-router/blob/master/CHANGELOG.md
+[changelog-url]: https://github.com/xphip/svelte-routing/blob/master/CHANGELOG.md

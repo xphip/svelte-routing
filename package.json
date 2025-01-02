@@ -1,7 +1,7 @@
 {
   "name": "svelte5-router",
   "version": "3.0.1",
-  "author": "Jacob Cutshall @jpcutshall",
+  "author": "Emil Tholin @EmilTholin w/ Jacob Cutshall @jpcutshall",
   "license": "MIT",
   "type": "module",
   "description": "A declarative Svelte routing library with SSR support",
@@ -23,12 +23,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpcutshall/svelte5-router.git"
+    "url": "https://github.com/xphip/svelte-routing.git"
   },
   "bugs": {
-    "url": "https://github.com/jpcutshall/svelte5-router/issues"
+    "url": "https://github.com/xphip/svelte-routing/issues"
   },
-  "homepage": "https://github.com/jpcutshall/svelte5-router",
+  "homepage": "https://github.com/xphip/svelte-routing",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "svelte": "./dist/index.js",
